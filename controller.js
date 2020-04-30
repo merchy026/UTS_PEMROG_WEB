@@ -11,9 +11,22 @@ exports.index = function(req, res){
 exports.tampilsemuasparepat = function(req,res){
     connection.query('SELECT * FROM t_sparepat', function(error, rows, fileds){
         if(error){
-            connection.log(error);
+            console.log(error);
         }else{
             response.ok(rows, res)
+        }
+    });
+};
+
+//menampilkan semua data sparepat berdasarkan id  
+exports.tampilsparepatberdasarkanid = function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM t_sparepat WHERE id_sparepat = ?',[id],
+    function(error, rows, fileds){
+        if(error){
+            console.log(error);
+        }else{
+            response.ok(rows, res);
         }
     });
 };

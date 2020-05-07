@@ -13,5 +13,8 @@ module.exports = function(app){
         .get(jsonku.tampilsparepatberdasarkanid);
 
     app.route('/tambah')
-        .post(jsonku.tambahsparepat);    
+        .post(jsonku.tambahsparepat); 
+    
+    app.route('/tambahservis')
+        .post(jsonku.tambahservisan);   
 } 

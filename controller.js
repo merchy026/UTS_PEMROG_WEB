@@ -48,3 +48,25 @@ exports.tambahsparepat = function(req,res){
         }
     });
 };
+
+//menambahkan data servis
+exports.tambahservisan = function(req,res){
+    var tgl_servis = req.tgl_servis;
+    var id_user = req.body.id_user;
+    var id_montir = req.body.id_montir;
+    var jumlah_sparepat = req.body.jumlah_sparepat;
+    var id_sparepat = req.body.id_sparepat;
+
+    connection.query('INSERT INTO t_servis (tgl_servis,id_user,id_montir,jumlah_sparepat,id_sparepat) VALUES(?,?,?,?,?)',
+    [tgl_servis,id_user,id_montir,jumlah_sparepat,id_sparepat],
+    function (error, rows, fileds){
+        if(error){
+            console.log(error);
+        }else{
+            response.ok("berhasil menambahkan data servis",res)
+        }
+    });
+};
+
+
+

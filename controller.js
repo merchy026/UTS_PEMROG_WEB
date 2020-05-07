@@ -57,23 +57,7 @@ exports.tampilmontirberdasarkanid = function(req,res){
 };
 
 
-//menambahkan data sparepat
-exports.tambahsparepat = function(req,res){
-    var id_sparepat = req.body.id_sparepat;
-    var nama_sparepat = req.body.nama_sparepat;
-    var harga_sparepat = req.body.harga_sparepat;
-    var satuan = req.body.satuan;
 
-    connection.query('INSERT INTO t_sparepat (id_sparepat,nama_sparepat,harga_sparepat,satuan) VALUES(?,?,?,?)',
-    [id_sparepat,nama_sparepat,harga_sparepat,satuan],
-    function (error, rows, fileds){
-        if(error){
-            console.log(error);
-        }else{
-            response.ok("berhasil menambahkan data sparepat",res)
-        }
-    });
-};
 
 //menambahkan data servis
 exports.tambahservisan = function(req,res){

@@ -17,9 +17,6 @@ module.exports = function(app){
 
     app.route('/tampilmontir/:id')
         .get(jsonku.tampilmontirberdasarkanid);   
-
-    app.route('/tambah')
-        .post(jsonku.tambahsparepat); 
     
     app.route('/tambahservis')
         .post(jsonku.tambahservisan);   

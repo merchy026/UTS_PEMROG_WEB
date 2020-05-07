@@ -31,6 +31,32 @@ exports.tampilsparepatberdasarkanid = function(req,res){
     });
 };
 
+
+//menampilkan semua data montir
+exports.tampilmontir = function(req,res){
+    connection.query('SELECT * FROM t_montir', function(error, rows, fileds){
+        if(error){
+            console.log(error);
+        }else{
+            response.ok(rows, res)
+        }
+    });
+};
+
+//menampilkan semua data montir berdasarkan id  
+exports.tampilmontirberdasarkanid = function(req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM t_montir WHERE id_montir = ?',[id],
+    function(error, rows, fileds){
+        if(error){
+            console.log(error);
+        }else{
+            response.ok(rows, res);
+        }
+    });
+};
+
+
 //menambahkan data sparepat
 exports.tambahsparepat = function(req,res){
     var id_sparepat = req.body.id_sparepat;

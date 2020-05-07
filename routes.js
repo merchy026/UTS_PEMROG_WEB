@@ -12,6 +12,12 @@ module.exports = function(app){
     app.route('/tampil/:id')
         .get(jsonku.tampilsparepatberdasarkanid);
 
+    app.route('/tampilmontir')
+        .get(jsonku.tampilmontir);
+
+    app.route('/tampilmontir/:id')
+        .get(jsonku.tampilmontirberdasarkanid);   
+
     app.route('/tambah')
         .post(jsonku.tambahsparepat); 
     

@@ -33,11 +33,11 @@ exports.registrasi = function(req, res) {
                     if(error){
                         console.log(error);
                     }else{
-                        response.ok("Berhasil menambahkan data user baru", res);
+                        response.ok("berhasil menambahkan data user baru", res);
                     }
                 });
             }else{
-                response.ok("email sudah terdaftar",res);
+                response.ok("email sudah terdaftar", res);
             }
         }
     })

@@ -12,12 +12,12 @@ exports.registrasi = function(req, res) {
         username: req.body.username,
         email: req.body.email,
         password: md5(req.body.password),
-        level: req.body.level,
+        role:  req.body.role,
         tanggal_daftar: new Date()
     }
     
     var query ="SELECT email FROM ?? WHERE ??=?";
-    var table = ("t_user", "email", post.email);
+    var table = ["t_user", "email", post.email];
 
     query = mysql.format(query, table);
 

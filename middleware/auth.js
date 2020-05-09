@@ -16,6 +16,7 @@ exports.registrasi = function(req, res) {
         tanggal_daftar: new Date()
     }
     
+    //registrasi berhasil setelah menambahkan WHERE ??=? DAN res di baris ke 41
     var query ="SELECT email FROM ?? WHERE ??=?";
     var table = ["t_user", "email", post.email];
 

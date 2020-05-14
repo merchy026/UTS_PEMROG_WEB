@@ -113,5 +113,24 @@ exports.tambahsparepatku = function (req, res) {
         });
 };
 
+//input data user
+exports.tambahuserku = function (req, res) {
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+    var role = req.body.role;
+
+    connection.query('INSERT INTO t_user (username,email,password,role) VALUES (?,?,?,?)',
+    [username,email,password,role],
+
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Menambahkan User", res);
+            }
+        });
+}
+
 
 

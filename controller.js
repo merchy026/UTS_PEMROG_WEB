@@ -95,5 +95,23 @@ exports.tambahmontirku = function (req, res) {
         });
 };
 
+//menambahkan data Sparepat
+exports.tambahsparepatku = function (req, res) {
+    var nama_sparepat = req.body.nama_sparepat;
+    var harga_sparepat = req.body.harga_sparepat;
+    var satuan = req.body.satuan;
+    
+
+    connection.query('INSERT INTO t_sparepat (nama_sparepat,harga_sparepat,satuan) VALUES(?,?,?)',
+        [nama_sparepat, harga_sparepat,satuan], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Menambahkan Data Sparepat", res)
+            }
+        });
+};
+
 
 

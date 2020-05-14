@@ -78,5 +78,22 @@ exports.tambahservisan = function(req,res){
     });
 };
 
+//menambahkan data montir
+exports.tambahmontirku = function (req, res) {
+    var nama_montir = req.body.nama_montir;
+    var harga_perjam = req.body.harga_perjam;
+    
+
+    connection.query('INSERT INTO t_montir (nama_montir,harga_perjam) VALUES(?,?)',
+        [nama_montir, harga_perjam],
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Menambahkan Data Montir", res)
+            }
+        });
+};
+
 
 

@@ -19,5 +19,10 @@ module.exports = function(app){
         .get(jsonku.tampilmontirberdasarkanid);   
     
     app.route('/tambahservis')
-        .post(jsonku.tambahservisan);   
+        .post(jsonku.tambahservisan);  
+        
+    app.route('/tambahmontir')
+        .post(jsonku.tambahmontirku);
+     
+
 } 

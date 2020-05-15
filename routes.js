@@ -36,6 +36,9 @@ module.exports = function(app){
     app.route('/ubahmontir')
     .put(jsonku.ubahmontirku);
 
+    app.route('/ubahsparepat')
+    .put(jsonku.ubahsparepatku);
+
 
 
 

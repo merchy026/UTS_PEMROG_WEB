@@ -164,4 +164,22 @@ exports.ubahmontirku = function (req, res) {
         });
 };
 
+//mengedit data Sparepat
+exports.ubahsparepatku = function (req, res) {
+    var id_sparepat = req.body.id_sparepat;
+    var nama_sparepat = req.body.nama_sparepat;
+    var harga_sparepat = req.body.harga_sparepat;
+    var satuan = req.body.satuan;
+
+    connection.query('UPDATE t_sparepat SET nama_sparepat=?, harga_sparepat=?, satuan=? WHERE id_sparepat=?', 
+    [nama_sparepat, harga_sparepat, satuan, id_sparepat],
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Ubah Data", res)
+            }
+        });
+};
+
 

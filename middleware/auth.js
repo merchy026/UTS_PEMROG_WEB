@@ -135,3 +135,23 @@ exports.ubahlevel = function (req, res) {
         });
 };
 
+
+//mengubah data di tabel service
+exports.ubahservis = function (req, res) {
+    var tgl_servis = new Date();
+    var id_user = req.body.id_user;
+    var id_montir = req.body.id_montir;
+    var jumlah_sparepat = req.body.jumlah_sparepat;
+    var id_sparepat = req.body.id_sparepat;
+    var id_servis = req.body.id_servis;
+    
+    connection.query('UPDATE t_service SET tgl_servis=?, id_user=?, id_montir=?, jumlah_sparepat=?, id_sparepat=? WHERE id_servis=?',
+        [ tgl_servis, id_user, id_montir, jumlah_sparepat, id_sparepat,id_servis], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Mengubah Data servis", res)
+            }
+        });
+};

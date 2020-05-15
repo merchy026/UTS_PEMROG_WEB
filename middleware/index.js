@@ -16,4 +16,7 @@ router.put('/api/v1/ubahuser',verifikasi(), auth.ubahuserku);
 //mengubah data level
 router.put('/api/v1/ubahlevel',verifikasi(), auth.ubahlevel);
 
+//mengubah data servis
+router.put('/api/v1/ubahservis',verifikasi(), auth.ubahservis);
+
 module.exports = router;

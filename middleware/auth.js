@@ -92,10 +92,29 @@ exports.login = function(req, res){
         }
     });
 }
- 
-
 
 
 exports.halamanrahasia = function(req,res){
-    response.ok("Halaman ini hanya untk user dengan role 2!",res);
+    response.ok("Halaman ini hanya untk user dengan role 1!",res);
 }
+
+//mengubah data di tabel User
+exports.ubahuserku = function (req, res) {
+    var id = req.body.id;
+    var nama_user = req.body.nama_user;
+    var email = req.body.email;
+    var password = md5(req.body.password);
+    var role = req.body.role;
+    var tanggal_daftar = req.body.tanggal_daftar;
+
+    connection.query('UPDATE t_user SET nama_user=?, email=?, password=?, role=? , tanggal_daftar=? WHERE id=?',
+        [nama_user, email, password, role,tanggal_daftar, id], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Mengubah Data user", res)
+            }
+        });
+};
+

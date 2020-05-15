@@ -14,7 +14,7 @@ function verifikasi(){
                 if(err){
                     return rest.status(401).send({auth:false, message:"Token tidak terdaftar"});
                 }else{
-                    if(role == 2){
+                    if(role == 1){
                         req.auth = decoded;
                         next();
                     }else{

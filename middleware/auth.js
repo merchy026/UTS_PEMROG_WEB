@@ -58,9 +58,9 @@ exports.login = function(req, res){
         if(error){
             console.log(error);
         }else{
-            if(rows.length == 1){
+            if(rows.length == 0){
                 var token = jwt.sign({rows}, config.secret, {
-                    expiresIn: 1440
+                    expiresIn: 2400
                 });
                 id_user = rows[0].id;
 
@@ -114,6 +114,23 @@ exports.ubahuserku = function (req, res) {
                 console.log(error);
             } else {
                 response.ok("Berhasil Mengubah Data user", res)
+            }
+        });
+};
+
+
+//mengubah data di tabel level
+exports.ubahlevel = function (req, res) {
+    var id_level = req.body.id_level;
+    var nama_level = req.body.nama_level;
+    
+    connection.query('UPDATE t_level SET nama_level=? WHERE id_level=?',
+        [id_level,nama_level], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Mengubah Data Level", res)
             }
         });
 };

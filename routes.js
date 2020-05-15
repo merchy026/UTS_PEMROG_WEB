@@ -33,6 +33,9 @@ module.exports = function(app){
     app.route('/tambahlevel')
         .post(jsonku.tambahlevelku);
 
+    app.route('/ubahmontir')
+    .put(jsonku.ubahmontirku);
+
 
 
 

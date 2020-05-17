@@ -23,6 +23,7 @@ router.put('/api/v1/ubahservis',verifikasi(), auth.ubahservis);
 
 //menambah mengubah dan menghapus data sparepat
 router.post('/api/v1/tambahsparepat',verifikasi(), auth.tambahsparepatku);
+router.put('/api/v1/ubahsparepat',verifikasi(), auth.ubahsparepatku);
 
 
 module.exports = router;

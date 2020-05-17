@@ -95,7 +95,7 @@ exports.login = function(req, res){
 
 
 exports.halamanrahasia = function(req,res){
-    response.ok("Halaman ini hanya untk user dengan role 1!",res);
+    response.ok("Halaman ini hanya untk user dengan role 2!",res);
 }
 
 //mengubah data di tabel User

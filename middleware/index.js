@@ -14,6 +14,8 @@ router.get('/api/v1/rahasia', verifikasi(), auth.halamanrahasia)
 // menambah, mengubah data user
 router.post('/api/v1/tambahuser',verifikasi(), auth.tambahuser);
 router.put('/api/v1/ubahuser',verifikasi(), auth.ubahuserku);
+router.delete('/api/v1/hapususer',verifikasi(), auth.hapususerku);
+
 
 //mengubah data level
 router.put('/api/v1/ubahlevel',verifikasi(), auth.ubahlevel);

@@ -18,9 +18,10 @@ router.delete('/api/v1/hapususer',verifikasi(), auth.hapususerku);
 
 
 
-//mengubah data level
+//mengubah menghapus dan menambah data level
 router.put('/api/v1/ubahlevel',verifikasi(), auth.ubahlevel);
 router.delete('/api/v1/hapusLevel',verifikasi(), auth.hapusLevelku);
+
 
 //mengubah menambah dan menghapus data servis
 router.put('/api/v1/ubahservis',verifikasi(), auth.ubahservis);
@@ -31,5 +32,8 @@ router.delete('/api/v1/hapusservis',verifikasi(), auth.hapusservisku);
 router.post('/api/v1/tambahsparepat',verifikasi(), auth.tambahsparepatku);
 router.put('/api/v1/ubahsparepat',verifikasi(), auth.ubahsparepatku);
 router.delete('/api/v1/hapussparepat',verifikasi(), auth.hapussparepatku);
+
+//menambah, mengubah, dan menghapus datamonir
+router.post('/api/v1/tambahmontir',verifikasi(), auth.tambahmontirku);
 
 module.exports = router;

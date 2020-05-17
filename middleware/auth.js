@@ -339,5 +339,39 @@ exports.hapususerku = function(req, res){
             }
         });
     };
-    
+  
+  //controller untuk menambah data montir
+exports.tambahmontirku = function(req, res) {
+    var post = {
+        nama_montir: req.body.nama_montir,
+        harga_perjam: req.body.harga_perjam
+    }
+
+    var query = "SELECT nama_montir FROM ?? WHERE ??=?";
+    var table = ["t_montir", "nama_montir", post.nama_montir];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_montir"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data Montir", res);
+                    }
+                });
+            }else{
+                response.ok("Montir sudah terdaftar!",res);
+            }
+        }
+    });
+};
+  
 

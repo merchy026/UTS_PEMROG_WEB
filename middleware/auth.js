@@ -299,3 +299,16 @@ exports.tambahservisku = function (req, res) {
         }
     });
 };
+
+//menghapus data tabel servis
+exports.hapusservisku = function(req, res){
+    var id = req.body.id_servis;
+    connection.query('DELETE FROM t_servis WHERE id_servis=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data servis", res)
+        }
+    });
+};

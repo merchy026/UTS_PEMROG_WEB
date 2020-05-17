@@ -250,3 +250,17 @@ exports.ubahsparepatku = function (req, res) {
             }
         });
 };
+
+
+//Menghapus data sparepat berdasarkan id
+exports.hapussparepatku = function(req, res){
+    var id = req.body.id_sparepat;
+    connection.query('DELETE FROM t_sparepat WHERE id_sparepat=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data Sparepat", res)
+        }
+    });
+};

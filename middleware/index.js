@@ -35,5 +35,6 @@ router.delete('/api/v1/hapussparepat',verifikasi(), auth.hapussparepatku);
 
 //menambah, mengubah, dan menghapus datamonir
 router.post('/api/v1/tambahmontir',verifikasi(), auth.tambahmontirku);
+router.put('/api/v1/ubahmontir',verifikasi(), auth.ubahmontirku);
 
 module.exports = router;

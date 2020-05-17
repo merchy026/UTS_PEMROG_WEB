@@ -36,4 +36,7 @@ router.post('/api/v1/tambahmontir',verifikasi(), auth.tambahmontirku);
 router.put('/api/v1/ubahmontir',verifikasi(), auth.ubahmontirku);
 router.delete('/api/v1/hapusmontir',verifikasi(), auth.hapusmontirku);
 
+//hitung
+router.get('/api/v1/totalservis',verifikasi(), auth.totalservisku);
+
 module.exports = router;

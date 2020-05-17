@@ -10,7 +10,9 @@ router.post('/api/v1/login', auth.login);
 //alamat yang perlu otorisasi
 router.get('/api/v1/rahasia', verifikasi(), auth.halamanrahasia)
 
-//mengubah data user
+
+// menambah, mengubah data user
+router.post('/api/v1/tambahuser',verifikasi(), auth.tambahuser);
 router.put('/api/v1/ubahuser',verifikasi(), auth.ubahuserku);
 
 //mengubah data level
@@ -18,5 +20,9 @@ router.put('/api/v1/ubahlevel',verifikasi(), auth.ubahlevel);
 
 //mengubah data servis
 router.put('/api/v1/ubahservis',verifikasi(), auth.ubahservis);
+
+//menambah mengubah dan menghapus data sparepat
+router.post('/api/v1/tambahsparepat',verifikasi(), auth.tambahsparepatku);
+
 
 module.exports = router;

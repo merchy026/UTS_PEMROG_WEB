@@ -57,8 +57,6 @@ exports.tampilmontirberdasarkanid = function(req,res){
 };
 
 
-
-
 //menambahkan data servis
 exports.tambahservisan = function(req,res){
     var tgl_servis = req.tgl_servis;

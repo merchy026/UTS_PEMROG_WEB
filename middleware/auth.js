@@ -58,7 +58,7 @@ exports.login = function(req, res){
         if(error){
             console.log(error);
         }else{
-            if(rows.length == 0){
+            if(rows.length == 1){
                 var token = jwt.sign({rows}, config.secret, {
                     expiresIn: 2400
                 });
@@ -101,14 +101,14 @@ exports.halamanrahasia = function(req,res){
 //mengubah data di tabel User
 exports.ubahuserku = function (req, res) {
     var id = req.body.id;
-    var nama_user = req.body.nama_user;
+    var username = req.body.username;
     var email = req.body.email;
     var password = md5(req.body.password);
     var role = req.body.role;
     var tanggal_daftar = req.body.tanggal_daftar;
 
-    connection.query('UPDATE t_user SET nama_user=?, email=?, password=?, role=? , tanggal_daftar=? WHERE id=?',
-        [nama_user, email, password, role,tanggal_daftar, id], 
+    connection.query('UPDATE t_user SET username=?, email=?, password=?, role=? , tanggal_daftar=? WHERE id=?',
+        [username, email, password, role,tanggal_daftar, id], 
         function (error, rows, fields) {
             if (error) {
                 console.log(error);
@@ -117,6 +117,9 @@ exports.ubahuserku = function (req, res) {
             }
         });
 };
+
+
+
 
 
 //mengubah data di tabel level
@@ -154,4 +157,78 @@ exports.ubahservis = function (req, res) {
                 response.ok("Berhasil Mengubah Data servis", res)
             }
         });
+};
+
+
+//controller untuk user
+exports.tambahuser = function(req,res) {
+    var post = {
+        username: req.body.username,
+        email: req.body.email,
+        password: md5(req.body.password),
+        level: req.body.level,
+        tanggal_daftar: new Date()
+    }
+
+    var query = "SELECT username FROM ?? WHERE ??=?";
+    var table = ["t_user", "username", post.nama_user];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error, rows) {
+        if(error){
+            console.log(error);
+        }else {
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_user"];
+                query = mysql.format(query, table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else {
+                        response.ok("Berhasil menambahkan data user baru", res);
+                    }
+                });
+            }else {
+                response.ok("user sudah terdaftar!",res);
+            }
+        }
+    })
+}
+
+
+//controller untuk input data sparepat
+exports.tambahsparepatku = function(req, res) {
+    var post = {
+        nama_sparepat: req.body.nama_sparepat,
+        harga_sparepat: req.body.harga_sparepat,
+        satuan: req.body.satuan
+    }
+
+    var query = "SELECT nama_sparepat FROM ?? WHERE ??=?";
+    var table = ["t_sparepat", "nama_sparepat", post.nama_sparepat];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_sparepat"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data Sparepat baru", res);
+                    }
+                });
+            }else{
+                response.ok("Sparepat sudah terdaftar!",res);
+            }
+        }
+    });
 };

@@ -119,9 +119,6 @@ exports.ubahuserku = function (req, res) {
 };
 
 
-
-
-
 //mengubah data di tabel level
 exports.ubahlevel = function (req, res) {
     var id_level = req.body.id_level;
@@ -261,6 +258,44 @@ exports.hapussparepatku = function(req, res){
             console.log(error);
         } else {
             response.ok("Berhasil Hapus Data Sparepat", res)
+        }
+    });
+};
+
+
+//menambahkan data servis
+exports.tambahservisku = function (req, res) {
+    var post = {
+     tgl_servis: new Date(),
+     id_user: req.body.id_user,
+     id_montir: req.body.id_montir,
+     jumlah_sparepat: req.body.jumlah_sparepat,	
+     id_sparepat: req.body.id_sparepat
+     
+    }
+      var query = "SELECT tgl_servis FROM ?? WHERE ??=?";
+    var table = ["t_servis", "tgl_servis", post.tgl_servis];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_servis"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data Servis baru", res);
+                    }
+                });
+            }else{
+                response.ok("Servis sudah terdaftar!",res);
+            }
         }
     });
 };

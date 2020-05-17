@@ -18,8 +18,9 @@ router.put('/api/v1/ubahuser',verifikasi(), auth.ubahuserku);
 //mengubah data level
 router.put('/api/v1/ubahlevel',verifikasi(), auth.ubahlevel);
 
-//mengubah data servis
+//mengubah menambah dan menghapus data servis
 router.put('/api/v1/ubahservis',verifikasi(), auth.ubahservis);
+router.post('/api/v1/tambahservis',verifikasi(),auth.tambahservisku);
 
 //menambah mengubah dan menghapus data sparepat
 router.post('/api/v1/tambahsparepat',verifikasi(), auth.tambahsparepatku);

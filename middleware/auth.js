@@ -163,12 +163,12 @@ exports.tambahuser = function(req,res) {
         username: req.body.username,
         email: req.body.email,
         password: md5(req.body.password),
-        level: req.body.level,
+        role: req.body.role,
         tanggal_daftar: new Date()
     }
 
     var query = "SELECT username FROM ?? WHERE ??=?";
-    var table = ["t_user", "username", post.nama_user];
+    var table = ["t_user", "username", post.username];
 
     query = mysql.format(query,table);
 
@@ -404,3 +404,35 @@ exports.hapusmontirku = function(req, res){
     });
 };
 
+//controller untuk input data level
+exports.tambahlevelku = function(req, res) {
+    var post = {
+        nama_level: req.body.nama_level
+    }
+
+    var query = "SELECT nama_level FROM ?? WHERE ??=?";
+    var table = ["t_level", "nama_level", post.nama_level];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_level"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data level baru", res);
+                    }
+                });
+            }else{
+                response.ok("Level sudah terdaftar!",res);
+            }
+        }
+    });
+};

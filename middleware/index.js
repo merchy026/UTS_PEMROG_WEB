@@ -16,12 +16,10 @@ router.post('/api/v1/tambahuser',verifikasi(), auth.tambahuser);
 router.put('/api/v1/ubahuser',verifikasi(), auth.ubahuserku);
 router.delete('/api/v1/hapususer',verifikasi(), auth.hapususerku);
 
-
-
 //mengubah menghapus dan menambah data level
 router.put('/api/v1/ubahlevel',verifikasi(), auth.ubahlevel);
 router.delete('/api/v1/hapusLevel',verifikasi(), auth.hapusLevelku);
-
+router.post('/api/v1/tambahlevel',verifikasi(), auth.tambahlevelku);
 
 //mengubah menambah dan menghapus data servis
 router.put('/api/v1/ubahservis',verifikasi(), auth.ubahservis);
